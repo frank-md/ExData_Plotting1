@@ -10,10 +10,11 @@ df1$Date <- as.Date(df1$Date, "%d/%m/%Y")
 dff <- filter(df1, Date == "2007-02-01" | Date == "2007-02-02")
 # convert DateTime string to Posixct date time format as a new column
 pdt <- strptime(dff$DateTime, format= "%d/%m/%Y %H:%M:%S")
-df <- cbind(dff,pdt)
+df <- cbind(dff,pdt) # 2880 obs. of 11 varibles
 #plot3
 df$Sub_metering_1 <- as.numeric(df$Sub_metering_1)
 df$Sub_metering_2 <- as.numeric(df$Sub_metering_2)
+#Sub_metering_3  is already a numbered variable.
 plot(df$pdt,df$Sub_metering_1,type="l", ylab="Energy sub metering",xlab="")
 lines(df$pdt,df$Sub_metering_2,col="red")
 lines(df$pdt,df$Sub_metering_3,col="blue")

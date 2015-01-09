@@ -10,7 +10,7 @@ df1$Date <- as.Date(df1$Date, "%d/%m/%Y")
 dff <- filter(df1, Date == "2007-02-01" | Date == "2007-02-02")
 # convert DateTime string to Posixct date time format as a new column
 pdt <- strptime(dff$DateTime, format= "%d/%m/%Y %H:%M:%S")
-df <- cbind(dff,pdt)
+df <- cbind(dff,pdt) # 2880 obs. of 11 varibles
 #plot 2
 plot(df$pdt,df$Global_active_power,type="l", ylab="Global Active Power(kilowatts)",xlab="")
 png(filename="plot2.png")

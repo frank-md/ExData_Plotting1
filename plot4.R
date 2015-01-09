@@ -10,13 +10,13 @@ df1$Date <- as.Date(df1$Date, "%d/%m/%Y")
 dff <- filter(df1, Date == "2007-02-01" | Date == "2007-02-02")
 # convert DateTime string to Posixct date time format as a new column
 pdt <- strptime(dff$DateTime, format= "%d/%m/%Y %H:%M:%S")
-df <- cbind(dff,pdt)
+df <- cbind(dff,pdt) # 2880 obs
 
 #plot4
 df$Global_reactive_power <- as.numeric(df$Global_reactive_power)
 df$Voltage <- as.numeric(df$Voltage)
 
-old.par <- par(mfrow=c(2,2))
+par(mfrow=c(2,2))
 plot(df$pdt,df$Global_active_power,type="l", ylab="Global Active Power(kilowatts)",xlab="")
 plot(df$pdt,df$Voltage,type="l", ylab="Voltage",xlab="datetime") 
 plot(df$pdt,df$Sub_metering_1,type="l", ylab="Energy sub metering",xlab="")
@@ -26,7 +26,7 @@ legend("topright", legend =c("Sub_metering_1","Sub_metering_2","Sub_metering_3")
 plot(df$pdt,df$Global_reactive_power,type="l", ylab="Global_reactive_power",xlab="datetime")
 # png file
 png(filename="plot4.png")
-old.par <- par(mfrow=c(2,2))
+par(mfrow=c(2,2))
 plot(df$pdt,df$Global_active_power,type="l", ylab="Global Active Power(kilowatts)",xlab="")
 plot(df$pdt,df$Voltage,type="l", ylab="Voltage",xlab="datetime")
 plot(df$pdt,df$Sub_metering_1,type="l", ylab="Energy sub metering",xlab="")
